@@ -22,13 +22,11 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] Quick custom tip amount feature without having to change the tip settings
+* [x] Quick custom tip amount feature without having to change the tip settings
 
 ## Video Walkthrough
 
-Here's a walkthrough of the app:
-
-<img src='https://i.imgur.com/Q8MfeUD.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+[Here's](https://i.imgur.com/Q8MfeUD.gif) a walkthrough of the app:
 
 ## Notes
 
