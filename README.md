@@ -26,9 +26,9 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of the app:
 
-[Demonstration](https://streamable.com/e/5d33af)
+<img src='https://i.imgur.com/Q8MfeUD.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Notes
 
