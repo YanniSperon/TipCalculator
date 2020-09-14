@@ -52,6 +52,8 @@ class ViewController: UIViewController {
         } else {
             tipAmountLabel.text = fmt.string(from: 0.0)
             finalAmountLabel.text = fmt.string(from: 0.0)
+            
+            tipAmountSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "defaultTipOption")
         }
     }
 
@@ -93,7 +95,11 @@ class ViewController: UIViewController {
             customTipValue = Double(unwrappedValue.replacingOccurrences(of: String(Locale.current.decimalSeparator ?? "."), with: ".")) ?? 0.0
         }
         
-        let tipValues = [0.15, 0.2, 0.25, customTipValue / 100.0]
+        let opt1 = UserDefaults.standard.double(forKey: "option1")
+        let opt2 = UserDefaults.standard.double(forKey: "option2")
+        let opt3 = UserDefaults.standard.double(forKey: "option3")
+        
+        let tipValues = [opt1, opt2, opt3, customTipValue / 100.0]
         
         let tipPercentage = tipValues[tipAmountSegmentedControl.selectedSegmentIndex]
         

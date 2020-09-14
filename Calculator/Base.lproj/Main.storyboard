@@ -78,7 +78,19 @@
                             <outletCollection property="gestureRecognizers" destination="QJm-pk-F8w" appends="YES" id="9lm-cf-xH6"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tips" id="Wi9-YW-nsa"/>
+                    <navigationItem key="navigationItem" title="Tips" id="Wi9-YW-nsa">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="8xc-uF-IJO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ef3-Pj-ZE8">
+                                <rect key="frame" x="372" y="10" width="22" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" image="gear" catalog="system"/>
+                                <connections>
+                                    <segue destination="2rz-dg-ghh" kind="show" id="PcI-lJ-bf6"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billAmountTextField" destination="IhH-S1-HRR" id="tUn-LZ-uMh"/>
                         <outlet property="customTipTextField" destination="ldq-3f-F3f" id="ci6-Nr-c9V"/>
@@ -94,7 +106,118 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
+            <point key="canvasLocation" x="1032" y="139"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Sam-29-Ygk">
+            <objects>
+                <viewController id="2rz-dg-ghh" customClass="SettingsViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lCf-lQ-iG6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 1:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySh-5p-QfL">
+                                <rect key="frame" x="20" y="135" width="116" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 2:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsG-VA-Vsa">
+                                <rect key="frame" x="20" y="179" width="120" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="%" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oO2-5I-bXc">
+                                <rect key="frame" x="234" y="179" width="160" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="changedOption2:" destination="2rz-dg-ghh" eventType="valueChanged" id="5eq-8R-95u"/>
+                                    <action selector="changedOption2:" destination="2rz-dg-ghh" eventType="editingChanged" id="8QH-u5-DvK"/>
+                                    <action selector="changedOption2:" destination="2rz-dg-ghh" eventType="touchUpInside" id="KZ7-Ku-oaX"/>
+                                    <action selector="changedOption2:" destination="2rz-dg-ghh" eventType="editingDidEndOnExit" id="Mbt-ve-Oz7"/>
+                                    <action selector="changedOption2:" destination="2rz-dg-ghh" eventType="editingDidEnd" id="WEo-UO-doF"/>
+                                    <action selector="changedOption2:" destination="2rz-dg-ghh" eventType="editingDidBegin" id="bdR-m7-vc9"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 3:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cls-Jx-ohV">
+                                <rect key="frame" x="20" y="223" width="121" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="%" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iz4-Ff-ea4">
+                                <rect key="frame" x="234" y="223" width="160" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="changedOption3:" destination="2rz-dg-ghh" eventType="editingChanged" id="44c-UC-CKu"/>
+                                    <action selector="changedOption3:" destination="2rz-dg-ghh" eventType="touchUpInside" id="6oP-U3-Qb6"/>
+                                    <action selector="changedOption3:" destination="2rz-dg-ghh" eventType="editingDidBegin" id="Jtl-rY-a2i"/>
+                                    <action selector="changedOption3:" destination="2rz-dg-ghh" eventType="editingDidEndOnExit" id="MGg-N1-58w"/>
+                                    <action selector="changedOption3:" destination="2rz-dg-ghh" eventType="valueChanged" id="N0V-PT-Owd"/>
+                                    <action selector="changedOption3:" destination="2rz-dg-ghh" eventType="editingDidEnd" id="nVh-l7-Mbw"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Default Tip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIW-cj-A8W">
+                                <rect key="frame" x="20" y="298" width="141" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="15n-X5-ZpJ">
+                                <rect key="frame" x="234" y="301" width="160" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changedDefaultTip:" destination="2rz-dg-ghh" eventType="editingDidEnd" id="QZq-ox-vTN"/>
+                                    <action selector="changedDefaultTip:" destination="2rz-dg-ghh" eventType="editingDidBegin" id="Wca-Nn-8lY"/>
+                                    <action selector="changedDefaultTip:" destination="2rz-dg-ghh" eventType="valueChanged" id="Ybz-Ze-h7Y"/>
+                                    <action selector="changedDefaultTip:" destination="2rz-dg-ghh" eventType="touchUpInside" id="j92-m7-i5C"/>
+                                    <action selector="changedDefaultTip:" destination="2rz-dg-ghh" eventType="editingChanged" id="qeh-pd-oc7"/>
+                                    <action selector="changedDefaultTip:" destination="2rz-dg-ghh" eventType="editingDidEndOnExit" id="usg-Yd-fq3"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="%" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2b-Ph-GL8">
+                                <rect key="frame" x="234" y="135" width="160" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="changedOption1:" destination="2rz-dg-ghh" eventType="valueChanged" id="CPM-iK-nEy"/>
+                                    <action selector="changedOption1:" destination="2rz-dg-ghh" eventType="editingDidEnd" id="PEy-Ip-DNV"/>
+                                    <action selector="changedOption1:" destination="2rz-dg-ghh" eventType="editingChanged" id="Rdr-2T-ayr"/>
+                                    <action selector="changedOption1:" destination="2rz-dg-ghh" eventType="editingDidBegin" id="cbG-aG-Byn"/>
+                                    <action selector="changedOption1:" destination="2rz-dg-ghh" eventType="editingDidEndOnExit" id="eJg-xH-UaY"/>
+                                    <action selector="changedOption1:" destination="2rz-dg-ghh" eventType="touchUpInside" id="ifv-ud-MxI"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FBh-c0-0w9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HzP-um-YCz"/>
+                    <connections>
+                        <outlet property="defaultTipSegmentedControl" destination="15n-X5-ZpJ" id="Xt5-9K-bPf"/>
+                        <outlet property="option1Percentage" destination="e2b-Ph-GL8" id="LJM-uM-ZuX"/>
+                        <outlet property="option2Percentage" destination="oO2-5I-bXc" id="czn-yg-7PO"/>
+                        <outlet property="option3Percentage" destination="iz4-Ff-ea4" id="sMM-EK-78P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94y-v8-F95" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1963.7681159420292" y="138.61607142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iqf-ab-LdC">
@@ -115,4 +238,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gear" catalog="system" width="128" height="119"/>
+    </resources>
 </document>
