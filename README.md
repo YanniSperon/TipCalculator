@@ -30,6 +30,8 @@ The following **additional** features are implemented:
 
 <img src='https://i.imgur.com/vmxESbP.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+<img src='https://i.imgur.com/7TvqgKX.mp4' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 ## Notes
 
 The main issue that I had, was being able to pass data and send updates between the settings view controller and the main view controller. I ended up solving this problem with UserDefaults, and the NotificationCenter.
