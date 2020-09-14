@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         fmt.numberStyle = .currency
         
         if ((NSDate().timeIntervalSince1970 - UserDefaults.standard.double(forKey: "time")) <= 600) {
-            print("Loading values")
             let billAmount = UserDefaults.standard.double(forKey: "billAmount")
             let finalAmount = UserDefaults.standard.double(forKey: "finalAmount")
             let tipAmount = UserDefaults.standard.double(forKey: "tipAmount")
