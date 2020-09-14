@@ -1,24 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MgM-RN-mti">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tips-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZZY-Wx-ekc">
+                                <rect key="frame" x="20" y="215" width="374" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="15%"/>
+                                    <segment title="20%"/>
+                                    <segment title="25%"/>
+                                    <segment title="Other"/>
+                                </segments>
+                                <connections>
+                                    <action selector="tipAmountControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OID-f4-3hC"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IhH-S1-HRR">
+                                <rect key="frame" x="20" y="124" width="374" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="billAmountFieldChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="GcG-mh-6ip"/>
+                                    <action selector="billAmountFieldChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="aLf-9l-MgS"/>
+                                    <action selector="billAmountFieldChanged:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="dlb-rW-3d8"/>
+                                    <action selector="billAmountFieldChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gli-Pw-6kI"/>
+                                    <action selector="billAmountFieldChanged:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="w4k-e0-XcR"/>
+                                    <action selector="billAmountFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="zRb-T0-2Jn"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBU-Vp-O1H">
+                                <rect key="frame" x="20" y="254" width="374" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aF-yc-Wrn">
+                                <rect key="frame" x="20" y="335" width="374" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ldq-3f-F3f">
+                                <rect key="frame" x="297" y="214" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="customTipAmountChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3fG-i2-u6C"/>
+                                    <action selector="customTipAmountChanged:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="Daz-qT-rdS"/>
+                                    <action selector="customTipAmountChanged:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="Gcx-2a-nEI"/>
+                                    <action selector="customTipAmountChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Ino-0E-BYc"/>
+                                    <action selector="customTipAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="Nwh-tu-QnV"/>
+                                    <action selector="customTipAmountChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="t1P-5e-NOh"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="QJm-pk-F8w" appends="YES" id="9lm-cf-xH6"/>
+                        </connections>
                     </view>
+                    <navigationItem key="navigationItem" title="Tips" id="Wi9-YW-nsa"/>
+                    <connections>
+                        <outlet property="billAmountTextField" destination="IhH-S1-HRR" id="tUn-LZ-uMh"/>
+                        <outlet property="customTipTextField" destination="ldq-3f-F3f" id="ci6-Nr-c9V"/>
+                        <outlet property="finalAmountLabel" destination="6aF-yc-Wrn" id="5S1-UK-yOx"/>
+                        <outlet property="tipAmountLabel" destination="LBU-Vp-O1H" id="PWe-aZ-dkI"/>
+                        <outlet property="tipAmountSegmentedControl" destination="ZZY-Wx-ekc" id="xF2-Tj-VWu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="QJm-pk-F8w">
+                    <connections>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="Te4-PN-3cF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iqf-ab-LdC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MgM-RN-mti" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yZV-zm-a6M">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="znH-Ge-HeF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eba-Un-Dfo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>
