@@ -26,11 +26,11 @@ class SettingsViewController: UIViewController {
             UserDefaults.standard.set(0.20, forKey: "option2")
             UserDefaults.standard.set(0.25, forKey: "option3")
         }
-        option1Percentage.text = String(UserDefaults.standard.double(forKey: "option1")).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
+        option1Percentage.text = String(format: "%.2f", UserDefaults.standard.double(forKey: "option1") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
         
-        option2Percentage.text = String(UserDefaults.standard.double(forKey: "option2")).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
+        option2Percentage.text = String(format: "%.2f", UserDefaults.standard.double(forKey: "option2") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
         
-        option3Percentage.text = String(UserDefaults.standard.double(forKey: "option3")).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
+        option3Percentage.text = String(format: "%.2f", UserDefaults.standard.double(forKey: "option3") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
         
         defaultTipSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "defaultTipOption")
     }

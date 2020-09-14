@@ -31,6 +31,10 @@ class ViewController: UIViewController {
         fmt.roundingMode = .up
         fmt.numberStyle = .currency
         
+        tipAmountSegmentedControl.setTitle(String(format: "%.2f", UserDefaults.standard.double(forKey: "option1") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? ".")), forSegmentAt: 0)
+        tipAmountSegmentedControl.setTitle(String(format: "%.2f", UserDefaults.standard.double(forKey: "option2") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? ".")), forSegmentAt: 1)
+        tipAmountSegmentedControl.setTitle(String(format: "%.2f", UserDefaults.standard.double(forKey: "option3") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? ".")), forSegmentAt: 2)
+        
         if ((NSDate().timeIntervalSince1970 - UserDefaults.standard.double(forKey: "time")) <= 600) {
             let billAmount = UserDefaults.standard.double(forKey: "billAmount")
             let finalAmount = UserDefaults.standard.double(forKey: "finalAmount")
