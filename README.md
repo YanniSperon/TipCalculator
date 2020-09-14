@@ -28,7 +28,7 @@ The following **additional** features are implemented:
 
 [Here's](https://i.imgur.com/Q8MfeUD.gif) a walkthrough of the app:
 
-<img src='https://i.imgur.com/a/3DmyApx.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/vmxESbP.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Notes
 
