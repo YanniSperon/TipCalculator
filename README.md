@@ -28,7 +28,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://streamable.com/e/5d33af?autoplay=1' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+[Demonstration](https://streamable.com/e/5d33af)
 
 ## Notes
 
