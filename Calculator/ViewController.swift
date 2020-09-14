@@ -18,7 +18,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(update(_:)), name: Notification.Name(rawValue: "update"), object: nil)
+        
         billAmountTextField.placeholder = Locale.current.currencySymbol
+        
+        billAmountTextField.becomeFirstResponder()
         
         customTipTextField.isHidden = false
         customTipTextField.alpha = 0.0
@@ -31,9 +36,18 @@ class ViewController: UIViewController {
         fmt.roundingMode = .up
         fmt.numberStyle = .currency
         
-        tipAmountSegmentedControl.setTitle(String(format: "%.2f", UserDefaults.standard.double(forKey: "option1") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? ".")), forSegmentAt: 0)
-        tipAmountSegmentedControl.setTitle(String(format: "%.2f", UserDefaults.standard.double(forKey: "option2") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? ".")), forSegmentAt: 1)
-        tipAmountSegmentedControl.setTitle(String(format: "%.2f", UserDefaults.standard.double(forKey: "option3") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? ".")), forSegmentAt: 2)
+        let percFmt = NumberFormatter()
+        percFmt.allowsFloats = true
+        percFmt.minimumFractionDigits = 0
+        percFmt.maximumFractionDigits = 2
+        percFmt.minimumIntegerDigits = 1
+        percFmt.roundingMode = .halfUp
+        percFmt.numberStyle = .percent
+        percFmt.multiplier = 1.0
+        
+        tipAmountSegmentedControl.setTitle(percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option1") * 100.0)) ?? percFmt.string(from: 0.0), forSegmentAt: 0)
+        tipAmountSegmentedControl.setTitle(percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option2") * 100.0)) ?? percFmt.string(from: 0.0), forSegmentAt: 1)
+        tipAmountSegmentedControl.setTitle(percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option3") * 100.0)) ?? percFmt.string(from: 0.0), forSegmentAt: 2)
         
         if ((NSDate().timeIntervalSince1970 - UserDefaults.standard.double(forKey: "time")) <= 600) {
             let billAmount = UserDefaults.standard.double(forKey: "billAmount")
@@ -60,9 +74,41 @@ class ViewController: UIViewController {
             tipAmountSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "defaultTipOption")
         }
     }
+    
+    @objc func update(_ notification: Notification) {
+        let percFmt = NumberFormatter()
+        percFmt.allowsFloats = true
+        percFmt.minimumFractionDigits = 0
+        percFmt.maximumFractionDigits = 2
+        percFmt.minimumIntegerDigits = 1
+        percFmt.roundingMode = .halfUp
+        percFmt.numberStyle = .percent
+        percFmt.multiplier = 1.0
+        
+        tipAmountSegmentedControl.setTitle(percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option1") * 100.0)) ?? percFmt.string(from: 0.0), forSegmentAt: 0)
+        tipAmountSegmentedControl.setTitle(percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option2") * 100.0)) ?? percFmt.string(from: 0.0), forSegmentAt: 1)
+        tipAmountSegmentedControl.setTitle(percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option3") * 100.0)) ?? percFmt.string(from: 0.0), forSegmentAt: 2)
+        
+        calculateTip()
+    }
 
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)
+    }
+    
+    @IBAction func changeToSettings(_ sender: Any) {
+        let percFmt = NumberFormatter()
+        percFmt.allowsFloats = true
+        percFmt.minimumFractionDigits = 0
+        percFmt.maximumFractionDigits = 2
+        percFmt.minimumIntegerDigits = 1
+        percFmt.roundingMode = .halfUp
+        percFmt.numberStyle = .percent
+        percFmt.multiplier = 1.0
+        
+        tipAmountSegmentedControl.setTitle(percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option1") * 100.0)) ?? percFmt.string(from: 0.0), forSegmentAt: 0)
+        tipAmountSegmentedControl.setTitle(percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option2") * 100.0)) ?? percFmt.string(from: 0.0), forSegmentAt: 1)
+        tipAmountSegmentedControl.setTitle(percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option3") * 100.0)) ?? percFmt.string(from: 0.0), forSegmentAt: 2)
     }
     
     @IBAction func customTipAmountChanged(_ sender: Any) {

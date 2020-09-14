@@ -86,6 +86,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" image="gear" catalog="system"/>
                                 <connections>
+                                    <action selector="changeToSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jHb-rI-bwh"/>
                                     <segue destination="2rz-dg-ghh" kind="show" id="PcI-lJ-bf6"/>
                                 </connections>
                             </button>

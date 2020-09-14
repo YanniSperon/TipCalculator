@@ -26,38 +26,57 @@ class SettingsViewController: UIViewController {
             UserDefaults.standard.set(0.20, forKey: "option2")
             UserDefaults.standard.set(0.25, forKey: "option3")
         }
-        option1Percentage.text = String(format: "%.2f", UserDefaults.standard.double(forKey: "option1") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
         
-        option2Percentage.text = String(format: "%.2f", UserDefaults.standard.double(forKey: "option2") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
+        let percFmt = NumberFormatter()
+        percFmt.allowsFloats = true
+        percFmt.minimumFractionDigits = 0
+        percFmt.maximumFractionDigits = 2
+        percFmt.minimumIntegerDigits = 1
+        percFmt.roundingMode = .halfUp
+        percFmt.numberStyle = .percent
+        percFmt.multiplier = 1.0
         
-        option3Percentage.text = String(format: "%.2f", UserDefaults.standard.double(forKey: "option3") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
+        option1Percentage.text = percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option1") * 100.0)) ?? percFmt.string(from: 0.0)
+        //option1Percentage.text = String(format: "%.2f", UserDefaults.standard.double(forKey: "option1") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
+        option2Percentage.text = percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option2") * 100.0)) ?? percFmt.string(from: 0.0)
+        //option2Percentage.text = String(format: "%.2f", UserDefaults.standard.double(forKey: "option2") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
+        option3Percentage.text = percFmt.string(from: NSNumber(value: UserDefaults.standard.double(forKey: "option3") * 100.0)) ?? percFmt.string(from: 0.0)
+        //option3Percentage.text = String(format: "%.2f", UserDefaults.standard.double(forKey: "option3") * 100.0).replacingOccurrences(of: ".", with: String(Locale.current.decimalSeparator ?? "."))
         
         defaultTipSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "defaultTipOption")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "update"), object: nil)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "update"), object: nil)
     }
 
     
     @IBAction func changedOption1(_ sender: Any) {
-        var value = 0.15
+        var value = 15.0
         if let unwrappedText = option1Percentage.text {
-            value = Double(unwrappedText.replacingOccurrences(of: String(Locale.current.decimalSeparator ?? "."), with: ".")) ?? 0.15
+            value = Double(unwrappedText.replacingOccurrences(of: String(Locale.current.decimalSeparator ?? "."), with: ".")) ?? 15.0
         }
-        UserDefaults.standard.set(value, forKey: "option1")
+        UserDefaults.standard.set(value / 100.0, forKey: "option1")
     }
     
     @IBAction func changedOption2(_ sender: Any) {
-        var value = 0.20
+        var value = 20.0
         if let unwrappedText = option2Percentage.text {
-            value = Double(unwrappedText.replacingOccurrences(of: String(Locale.current.decimalSeparator ?? "."), with: ".")) ?? 0.20
+            value = Double(unwrappedText.replacingOccurrences(of: String(Locale.current.decimalSeparator ?? "."), with: ".")) ?? 20.0
         }
-        UserDefaults.standard.set(value, forKey: "option2")
+        UserDefaults.standard.set(value / 100.0, forKey: "option2")
     }
     
     @IBAction func changedOption3(_ sender: Any) {
-        var value = 0.25
+        var value = 25.0
         if let unwrappedText = option3Percentage.text {
-            value = Double(unwrappedText.replacingOccurrences(of: String(Locale.current.decimalSeparator ?? "."), with: ".")) ?? 0.25
+            value = Double(unwrappedText.replacingOccurrences(of: String(Locale.current.decimalSeparator ?? "."), with: ".")) ?? 25.0
         }
-        UserDefaults.standard.set(value, forKey: "option3")
+        UserDefaults.standard.set(value / 100.0, forKey: "option3")
     }
     
     @IBAction func changedDefaultTip(_ sender: Any) {
